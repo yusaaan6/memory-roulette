@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> memory roulette</title>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    text-align:center;
+    font-family:sans-serif;
+    background:#fff5f8;
+}
+
+h1{
+    color:#ff6b9d;
+}
+
+#wheel{
+    font-size:80px;
+    margin:30px 0;
+    transition:transform 3s ease-out;
+}
+
+button{
+    background:#ff7fab;
+    color:white;
+    border:none;
+    border-radius:30px;
+    padding:15px 35px;
+    font-size:18px;
+}
+
+.card{
+    margin-top:30px;
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+img{
+    width:100%;
+    max-width:350px;
+    border-radius:15px;
+}
+
+#caption{
+    font-size:20px;
+    margin-top:10px;
+    color:#444;
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 Roulette 💖</h1>
+
+<div id="wheel">🎡</div>
+
+<button onclick="spin()">回す！</button>
+
+<div class="card" id="result" style="display:none">
+
+<img id="photo">
+
+<div id="caption"></div>
+
+</div>
+
+<script>
+
+const memories = [
+
+{
+image:"photo01.jpg",
+text:"　"
+},
+
+{
+image:"photo02.jpg",
+text:"おぼんdeごはん"
+},
+
+{
+image:"photo03.jpg",
+text:" "
+},
+
+{
+image:"photo04.jpg",
+text:""
+}
+
+];
+
+function spin(){
+
+const wheel = document.getElementById("wheel");
+
+wheel.style.transform =
+`rotate(${1440 + Math.random()*720}deg)`;
+
+setTimeout(()=>{
+
+const result =
+memories[Math.floor(Math.random()*memories.length)];
+
+document.getElementById("photo").src =
+result.image;
+
+document.getElementById("caption").textContent =
+result.text;
+
+document.getElementById("result").style.display =
+"block";
+
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
