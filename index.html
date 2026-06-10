@@ -229,11 +229,55 @@ result.text;
 document.getElementById("result").style.display =
 "block";
 
+for(let i=0; i<20; i++){
+
+    const heart =
+    document.createElement("div");
+
+    heart.className = "heart";
+   const hearts = ["💖","💕","💗","💘"];
+
+heart.innerHTML =
+hearts[Math.floor(Math.random()*hearts.length)];
+    heart.style.left =
+    Math.random()*100 + "vw";
+
+    heart.style.top =
+    "80vh";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },3000);
+}
+    
 },3000);
 
 }
 
 </script>
+
+    <style>
+.heart{
+    position:fixed;
+    font-size:24px;
+    pointer-events:none;
+    animation:float 3s linear forwards;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-300px);
+        opacity:0;
+    }
+}
+</style>
 
 </body>
 </html>
